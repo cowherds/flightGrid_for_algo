@@ -1,0 +1,230 @@
+{
+  "_meta": {
+    "description": "algo_run 插件清单：键为 catalog 中可能出现的 algorithmId/schedulingId（含外部别名与内部名），值为 import 路径。与 AlgorithmRegistry 注册保持一致；未安装 ortools/pyomo 时对应算法仍可能在运行时报 ImportError。",
+    "maintenance": "与 backend/algorithm_catalog.py 中的 PLANNER_EXTERNAL_TO_INTERNAL / SCHEDULER_EXTERNAL_TO_INTERNAL 保持键集合一致；新增 catalog 映射或注册新算法时需同步更新本文件。"
+  },
+  "planners": {
+    "a_star_3d": {
+      "module": "backend.algorithms.path_planning.a_star",
+      "class": "AStarPlanner"
+    },
+    "astar": {
+      "module": "backend.algorithms.path_planning.a_star",
+      "class": "AStarPlanner"
+    },
+    "astar_v2": {
+      "module": "backend.algorithms.path_planning.a_star",
+      "class": "AStarPlanner"
+    },
+    "dijkstra": {
+      "module": "backend.algorithms.path_planning.dijkstra",
+      "class": "DijkstraPlanner"
+    },
+    "dijkstra_3d": {
+      "module": "backend.algorithms.path_planning.dijkstra",
+      "class": "DijkstraPlanner"
+    },
+    "direct_safe": {
+      "module": "backend.algorithms.path_planning.direct_safe",
+      "class": "DirectSafePlanner"
+    },
+    "direct_safe_3d": {
+      "module": "backend.algorithms.path_planning.direct_safe",
+      "class": "DirectSafePlanner"
+    },
+    "direct_safe_conservative": {
+      "module": "backend.algorithms.path_planning.direct_safe",
+      "class": "DirectSafeConservativePlanner"
+    },
+    "direct_safe_conservative_3d": {
+      "module": "backend.algorithms.path_planning.direct_safe",
+      "class": "DirectSafeConservativePlanner"
+    },
+    "geometric_heuristic": {
+      "module": "backend.algorithms.path_planning.geometric_heuristic",
+      "class": "GeometricHeuristicPlanner"
+    },
+    "geometric_heuristic_3d": {
+      "module": "backend.algorithms.path_planning.geometric_heuristic",
+      "class": "GeometricHeuristicPlanner"
+    },
+    "geometric_heuristic_quality": {
+      "module": "backend.algorithms.path_planning.geometric_heuristic",
+      "class": "GeometricHeuristicQualityPlanner"
+    },
+    "geometric_heuristic_quality_3d": {
+      "module": "backend.algorithms.path_planning.geometric_heuristic",
+      "class": "GeometricHeuristicQualityPlanner"
+    },
+    "geometric_heuristic_speed": {
+      "module": "backend.algorithms.path_planning.geometric_heuristic",
+      "class": "GeometricHeuristicSpeedPlanner"
+    },
+    "geometric_heuristic_speed_3d": {
+      "module": "backend.algorithms.path_planning.geometric_heuristic",
+      "class": "GeometricHeuristicSpeedPlanner"
+    },
+    "orthogonal_safe": {
+      "module": "backend.algorithms.path_planning.orthogonal_safe",
+      "class": "OrthogonalSafePlanner"
+    },
+    "orthogonal_safe_3d": {
+      "module": "backend.algorithms.path_planning.orthogonal_safe",
+      "class": "OrthogonalSafePlanner"
+    },
+    "ovs": {
+      "module": "backend.algorithms.path_planning.ovs_planner",
+      "class": "OVSPathPlanner"
+    },
+    "ovs_2d_slice": {
+      "module": "backend.algorithms.path_planning.ovs_planner",
+      "class": "OVSPathPlanner"
+    },
+    "weighted_a_star_3d": {
+      "module": "backend.algorithms.path_planning.weighted_a_star",
+      "class": "WeightedAStarPlanner"
+    },
+    "weighted_a_star_fast_3d": {
+      "module": "backend.algorithms.path_planning.weighted_a_star",
+      "class": "WeightedAStarFastPlanner"
+    },
+    "weighted_a_star_quality_3d": {
+      "module": "backend.algorithms.path_planning.weighted_a_star",
+      "class": "WeightedAStarQualityPlanner"
+    },
+    "weighted_astar_fast": {
+      "module": "backend.algorithms.path_planning.weighted_a_star",
+      "class": "WeightedAStarFastPlanner"
+    },
+    "weighted_astar_quality": {
+      "module": "backend.algorithms.path_planning.weighted_a_star",
+      "class": "WeightedAStarQualityPlanner"
+    },
+    "weighted_astar_v2": {
+      "module": "backend.algorithms.path_planning.weighted_a_star",
+      "class": "WeightedAStarPlanner"
+    }
+  },
+  "schedulers": {
+    "balanced_kmeans": {
+      "module": "backend.algorithms.scheduling.scalable.balanced_kmeans",
+      "class": "BalancedKMeansScheduler"
+    },
+    "capacity_first": {
+      "module": "backend.algorithms.scheduling.greedy.capacity_first",
+      "class": "CapacityFirstScheduler"
+    },
+    "distance_first": {
+      "module": "backend.algorithms.scheduling.greedy.distance_first",
+      "class": "DistanceFirstScheduler"
+    },
+    "fast_greedy": {
+      "module": "backend.algorithms.scheduling.scalable.fast_greedy",
+      "class": "FastGreedyScheduler"
+    },
+    "hybrid_large_scale": {
+      "module": "backend.algorithms.scheduling.scalable.hybrid_large_scale",
+      "class": "HybridLargeScaleScheduler"
+    },
+    "hybrid_large_scale_dep": {
+      "module": "backend.algorithms.scheduling.scalable.hybrid_large_scale",
+      "class": "HybridLargeScaleDependencyScheduler"
+    },
+    "hybrid_large_scale_fast": {
+      "module": "backend.algorithms.scheduling.scalable.hybrid_large_scale",
+      "class": "HybridLargeScaleFastScheduler"
+    },
+    "hybrid_large_scale_maxcpu": {
+      "module": "backend.algorithms.scheduling.scalable.hybrid_large_scale",
+      "class": "HybridLargeScaleMaxCPUScheduler"
+    },
+    "hybrid_large_scale_quality": {
+      "module": "backend.algorithms.scheduling.scalable.hybrid_large_scale",
+      "class": "HybridLargeScaleQualityScheduler"
+    },
+    "hybrid_large_scale_tw": {
+      "module": "backend.algorithms.scheduling.scalable.hybrid_large_scale",
+      "class": "HybridLargeScaleTimeWindowsScheduler"
+    },
+    "hybrid_large_scale_tw_dep": {
+      "module": "backend.algorithms.scheduling.scalable.hybrid_large_scale",
+      "class": "HybridLargeScaleTimeWindowsDependencyScheduler"
+    },
+    "improved_nearest_neighbor": {
+      "module": "backend.algorithms.scheduling.greedy.nearest_neighbor",
+      "class": "NearestNeighborScheduler"
+    },
+    "insertion_heuristic": {
+      "module": "backend.algorithms.scheduling.optimization.insertion",
+      "class": "InsertionScheduler"
+    },
+    "kmeans": {
+      "module": "backend.algorithms.scheduling.clustering.kmeans",
+      "class": "KMeansScheduler"
+    },
+    "lmta": {
+      "module": "backend.algorithms.scheduling.lmta",
+      "class": "LMTAScheduler"
+    },
+    "milp_alns": {
+      "module": "backend.algorithms.scheduling.optimization.milp_alns_impl",
+      "class": "MilpAlnsScheduler"
+    },
+    "nearest_neighbor": {
+      "module": "backend.algorithms.scheduling.greedy.nearest_neighbor",
+      "class": "NearestNeighborScheduler"
+    },
+    "ortools_vrp": {
+      "module": "backend.algorithms.scheduling.optimization.ortools_vrp",
+      "class": "ORToolsScheduler"
+    },
+    "ortools_vrp_capacity": {
+      "module": "backend.algorithms.scheduling.optimization.ortools_vrp",
+      "class": "ORToolsCapacityScheduler"
+    },
+    "ortools_vrp_deep": {
+      "module": "backend.algorithms.scheduling.optimization.ortools_vrp",
+      "class": "ORToolsDeepScheduler"
+    },
+    "ortools_vrp_dep": {
+      "module": "backend.algorithms.scheduling.optimization.ortools_vrp",
+      "class": "ORToolsDependencyScheduler"
+    },
+    "ortools_vrp_fast": {
+      "module": "backend.algorithms.scheduling.optimization.ortools_vrp",
+      "class": "ORToolsFastScheduler"
+    },
+    "ortools_vrp_parallel": {
+      "module": "backend.algorithms.scheduling.optimization.ortools_vrp",
+      "class": "ORToolsParallelInitScheduler"
+    },
+    "ortools_vrp_prize": {
+      "module": "backend.algorithms.scheduling.optimization.ortools_vrp",
+      "class": "ORToolsPrizeCollectingScheduler"
+    },
+    "ortools_vrp_sa": {
+      "module": "backend.algorithms.scheduling.optimization.ortools_vrp",
+      "class": "ORToolsSimulatedAnnealingScheduler"
+    },
+    "ortools_vrp_tabu": {
+      "module": "backend.algorithms.scheduling.optimization.ortools_vrp",
+      "class": "ORToolsTabuScheduler"
+    },
+    "ortools_vrp_tw": {
+      "module": "backend.algorithms.scheduling.optimization.ortools_vrp",
+      "class": "ORToolsTimeWindowsScheduler"
+    },
+    "ortools_vrp_tw_dep": {
+      "module": "backend.algorithms.scheduling.optimization.ortools_vrp",
+      "class": "ORToolsTimeWindowsDependencyScheduler"
+    },
+    "sector_sweep": {
+      "module": "backend.algorithms.scheduling.scalable.sector_sweep",
+      "class": "SectorSweepScheduler"
+    },
+    "two_level_scheduler": {
+      "module": "backend.algorithms.scheduling.two_level_scheduler",
+      "class": "TwoLevelScheduler"
+    }
+  }
+}

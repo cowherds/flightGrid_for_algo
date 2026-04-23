@@ -1,0 +1,123 @@
+# ============================================================================
+# POCAS 算法配置文件
+# 所有参数都可以通过前端进行调整和优化
+# ============================================================================
+
+# 无人机默认配置
+drones:
+  default:
+    # 基础性能参数
+    max_range: 10000              # 最大航程 (米) - 影响任务分配范围
+    speed: 15                     # 飞行速度 (米/秒) - 影响时间计算
+    capacity: 10                  # 最大载重 (千克) - 影响任务分配
+
+    # 安全参数
+    min_altitude: 10              # 最小飞行高度 (米)
+    max_altitude: 150             # 最大飞行高度 (米)
+    safe_radius: 20               # 安全半径 (米) - 碰撞检测用
+
+    # 行为参数
+    return_to_depot_required: true # 是否必须返回基地
+    battery_capacity: 5000        # 电池容量 (mAh)
+    battery_consumption_rate: 50  # 电池消耗率 (mAh/min)
+
+# 任务默认配置
+tasks:
+  default:
+    weight: 1                     # 任务重量 (千克)
+    type: "delivery"              # 任务类型: delivery|pickup|inspection
+    service_duration: 10          # 服务耗时 (秒)
+    priority: 1                   # 任务优先级 (1-10)
+
+# 路径规划配置
+path_planning:
+  a_star:
+    # 网格参数 - 影响精度和速度的关键参数
+    grid_resolution: 20           # 网格分辨率 (米)
+                                  # 推荐范围: 5-50
+                                  # 小值(5-10): 精度高但计算慢，适合小场景
+                                  # 中值(15-25): 平衡精度和速度，推荐
+                                  # 大值(30-50): 速度快但精度低，适合大场景
+
+    # 搜索参数
+    max_iterations: 100000        # 最大搜索迭代次数
+    timeout: 30                   # 搜索超时时间 (秒)
+
+    # 启发函数
+    heuristic: "euclidean"        # 启发函数类型: euclidean|manhattan
+
+    # 路径平滑
+    smooth_path: true             # 是否平滑路径
+    smoothing_iterations: 5       # 平滑迭代次数
+
+  dijkstra:
+    # 网格参数
+    grid_resolution: 20           # 网格分辨率 (米)
+
+    # 搜索参数
+    max_iterations: 100000        # 最大搜索迭代次数
+    timeout: 30                   # 搜索超时时间 (秒)
+
+    # 路径平滑
+    smooth_path: true             # 是否平滑路径
+    smoothing_iterations: 5       # 平滑迭代次数
+
+# 调度算法配置
+scheduling:
+  insertion_heuristic:
+    # 迭代参数
+    max_iterations: 1000          # 最大迭代次数
+
+    # 成本权重 - 影响算法的优化目标
+    insertion_cost_weight: 1.0    # 插入成本权重
+    time_penalty: 1.0             # 时间惩罚系数 (增大→更重视时间窗口)
+    distance_penalty: 1.0         # 距离惩罚系数 (增大→更重视距离优化)
+
+  nearest_neighbor:
+    # 贪心参数
+    greedy_factor: 1.0            # 贪心因子 (1.0 = 完全贪心)
+    randomization: 0.0            # 随机化程度 (0-1, 增大→更随机)
+
+# 碰撞检测配置
+collision_detection:
+  # 安全参数 - 影响无人机活动空间
+  safe_radius: 20                 # 无人机安全半径 (米)
+  collision_distance: 40          # 碰撞判定距离 (米) = safe_radius * 2
+
+  # 检测参数
+  time_step: 1.0                  # 时间采样间隔 (秒)
+                                  # 小值→检测精细但计算多
+                                  # 大值→检测粗糙但计算少
+  line_of_sight_samples: 50       # 视线检测采样点数
+
+  # 警告参数
+  warning_threshold: 50           # 警告距离阈值 (米)
+  critical_threshold: 20          # 危险距离阈值 (米)
+  collision_event_aggregation: 5  # 碰撞事件聚合时间 (秒)
+
+# 环境配置
+environment:
+  # 空间限制
+  space_limits:
+    x_max: 500                    # X 轴最大边界 (米)
+    y_max: 500                    # Y 轴最大边界 (米)
+    z_max: 150                    # Z 轴最大边界 (米)
+
+  # 环境参数
+  wind_speed: 0                   # 风速 (米/秒)
+  wind_direction: 0               # 风向 (度)
+  temperature: 20                 # 温度 (摄氏度)
+
+# 全局配置
+global:
+  # 日志
+  log_level: "INFO"               # 日志级别: DEBUG|INFO|WARNING|ERROR
+  log_file: "logs/pocas.log"      # 日志文件路径
+
+  # 性能
+  enable_caching: true            # 是否启用路径缓存
+  cache_ttl: 3600                 # 缓存过期时间 (秒)
+
+  # 调试
+  debug_mode: false               # 是否启用调试模式
+  visualize_search: false         # 是否可视化搜索过程

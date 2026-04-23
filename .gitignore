@@ -1,0 +1,79 @@
+# =========================
+# Workspace / IDE
+# =========================
+.claude/
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# =========================
+# OS junk
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Python cache / build
+# =========================
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+
+# Virtual envs
+.venv/
+venv/
+env/
+
+# Generic JS package managers (if any local tooling)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# =========================
+# C/C++ build artifacts
+# =========================
+backend/cpp_engine/build/
+*.o
+*.obj
+*.so
+*.a
+*.lib
+*.dll
+*.dylib
+*.exe
+
+# =========================
+# Runtime logs / temp
+# =========================
+logs/
+*.log
+tmp/
+temp/
+notseee/
+
+# =========================
+# Local env / secrets
+# =========================
+.env
+.env.*
+*.local
+
+# =========================
+# Generated outputs (non-source)
+# =========================
+# algo_run 默认写在场景同目录的指标文本
+**/*_algo_metrics.txt
